@@ -1,0 +1,39 @@
+@IBOutlet weak var blueBall: UIImageView!
+
+@IBOutlet weak var redBall: UIImageView!
+// need gloves to be on top of the punching bag
+// need to fix return/final (after animation) destination of gloves
+// hold OPTION and left click over syntax for better understanding if questions remain
+
+@IBAction func leftButtonPressed(sender: UIButton) {
+self.blueBall.center.x = self.view.center.x - 10 // Starting point of animation (not to be confused with return.
+self.blueBall.center.y = self.view.center.y - 10
+
+UIView.animateWithDuration(3.5,
+delay: 0,
+usingSpringWithDamping: 5, // spring with damping is like a recoil effect
+initialSpringVelocity: 5.0,
+options: [],
+animations: ({
+self.blueBall.center.x = self.view.frame.width / 10
+self.blueBall.center.y = self.view.frame.height / 1.15
+}),
+completion: nil
+)
+}
+
+
+@IBAction func rightButtonPressed(sender: UIButton) {
+redBall.center.x = self.view.center.x + 10
+redBall.center.y = self.view.center.y + 10
+
+UIView.animateWithDuration(3.5,
+delay: 0,
+usingSpringWithDamping: 2,
+initialSpringVelocity: 5.0,
+options: [],
+animations: ({
+self.redBall.center.x = (self.view.frame.width / 10) + 600 // final position after animation - horizontal. Will need to tweak so that the initial and return destination matches.
+self.redBall.center.y = self.view.frame.height / 1.15 //like the comment above but it's for vertical.
+}), completion: nil)
+}
